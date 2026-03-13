@@ -16,6 +16,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Carousel - inline to prevent cache issues */
+        .gallery-carousel{position:relative;overflow:hidden;border-radius:24px;background:#111827}
+        .gallery-track{display:flex;flex-wrap:nowrap;transition:transform .5s ease}
+        .gallery-slide{flex:0 0 100%;min-width:100%;width:100%;position:relative}
+        .gallery-slide img{width:100%;height:480px;object-fit:cover;display:block}
+        .gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:24px 32px;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff;font-weight:600;font-size:1.1rem}
+        .gallery-btn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:none;background:rgba(255,255,255,.85);color:#1F2937;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:2}
+        .gallery-btn-prev{left:16px}
+        .gallery-btn-next{right:16px}
+        .gallery-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+        .gallery-dot{width:10px;height:10px;border-radius:50%;border:2px solid rgba(255,255,255,.7);background:transparent;cursor:pointer;padding:0}
+        .gallery-dot.active{background:#fff;border-color:#fff;transform:scale(1.2)}
+        @media(max-width:768px){.gallery-slide img{height:280px}.gallery-btn{width:38px;height:38px}.gallery-caption{font-size:.95rem;padding:16px 20px}}
+    </style>
 </head>
 <body>
     <!-- Top Bar -->
@@ -214,6 +229,44 @@
                     <h3>Emergency Care</h3>
                     <p>Prompt attention for dental emergencies with dedicated emergency contact availability.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinic Gallery Section -->
+    <section class="section gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Our Clinic</p>
+                <h2>A Glimpse Inside Our Clinic</h2>
+                <p class="section-description">Modern equipment, strict sterilization, and a welcoming environment designed for your comfort.</p>
+            </div>
+            <div class="gallery-carousel" id="galleryCarousel">
+                <div class="gallery-track" id="galleryTrack">
+                    <div class="gallery-slide">
+                        <img src="images/clinic-treatment-room.jpg" alt="Treatment room with advanced dental chair and lavender interiors" loading="lazy">
+                        <div class="gallery-caption">Treatment Room</div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/clinic-equipment.jpg" alt="Modern dental equipment and sterilization unit" loading="lazy">
+                        <div class="gallery-caption">Advanced Equipment</div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/clinic-waiting-area.jpg" alt="Patient waiting area with view of treatment room" loading="lazy">
+                        <div class="gallery-caption">Waiting Area</div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/clinic-reception.jpg" alt="Reception area with professional certifications" loading="lazy">
+                        <div class="gallery-caption">Reception &amp; Credentials</div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="images/clinic-waiting-chairs.jpg" alt="Comfortable seating in waiting area" loading="lazy">
+                        <div class="gallery-caption">Patient Seating</div>
+                    </div>
+                </div>
+                <button class="gallery-btn gallery-btn-prev" id="galleryPrev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-btn gallery-btn-next" id="galleryNext" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                <div class="gallery-dots" id="galleryDots"></div>
             </div>
         </div>
     </section>
